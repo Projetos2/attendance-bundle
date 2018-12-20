@@ -518,12 +518,12 @@
                                                 </span>
                                             </td>
                                             <td>
-                                                <span v-if="atendimento.dataInicio">
+                                                <span v-if="atendimentoResult.dataInicio">
                                                     {{moment(atendimentoResult.dataInicio, 'YYYY-MM-DD hh:mm:ss').format(dateTimeFormat)}}
                                                 </span>
                                             </td>
                                             <td>
-                                                <span v-if="atendimento.dataFim">
+                                                <span v-if="atendimentoResult.dataFim">
                                                     {{moment(atendimentoResult.dataFim, 'YYYY-MM-DD hh:mm:ss').format(dateTimeFormat)}}
                                                 </span>
                                             </td>
