@@ -143,6 +143,7 @@ var App = App || {};
 
                     App.ajax({
                         url: App.url('/novosga.attendance/chamar'),
+                        data: {idAtendimento: e.target.id,}, 
                         type: 'post',
                         success: function (response) {
                             self.atendimento = response.data;
@@ -156,6 +157,10 @@ var App = App || {};
                             setTimeout(function () {
                                 e.target.disabled = false;
                             }, 5 * 1000);
+                            
+                            if(e.target.id > 0){
+                                $('#dialog-busca').modal('hide');
+                            }
                         }
                     });
                 }
