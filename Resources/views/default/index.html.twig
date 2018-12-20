@@ -513,7 +513,7 @@
                                                 {{atendimentoResult.prioridade.nome}}
                                             </td>
                                             <td>
-                                                <span v-if="atendimento.dataChegada">
+                                                <span v-if="atendimentoResult.dataChegada">
                                                     {{moment(atendimentoResult.dataChegada, 'YYYY-MM-DD hh:mm:ss').format(dateTimeFormat)}}
                                                 </span>
                                             </td>
