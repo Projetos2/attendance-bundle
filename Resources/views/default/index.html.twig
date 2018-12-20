@@ -478,8 +478,10 @@
                             <table class="table">
                                 <thead>
                                     <tr>
+                                        <th>{{ trans }}</th>
                                         <th>{{ 'label.ticket.number'|trans }}</th>
                                         <th>{{ 'label.service'|trans }}</th>
+                                        <th>{{ 'label.priority'|trans }}</th>
                                         <th>{{ 'label.ticket.arrival_date'|trans }}</th>
                                         <th>{{ 'label.ticket.start_date'|trans }}</th>
                                         <th>{{ 'label.ticket.end_date'|trans }}</th>
@@ -490,36 +492,49 @@
                                 </thead>
                                 <tbody>
                                     {% verbatim %}
-                                        <tr v-for="atendimento in searchResult">
+                                        <tr v-for="atendimento in atendimentoResult">
                                             <td>
-                                                {{atendimento.senha.format}}
+                                               <button type="button" v-if="(atendimentoResult.status==='chamado' || atendimentoResult.status==='iniciado' || atendimentoResult.status==='emitida')"
+                                                    class="btn btn-primary btn-block"
+                                                    title="Chamar"
+                                                    v-bind:disabled="atendimento !== null"
+                                                    v-on:click="chamar"
+                                                    v-bind:id="atendimentoResult.id">
+                                                    <i class="fa fa-bullhorn"></i>
+                                                </button>
                                             </td>
                                             <td>
-                                                {{atendimento.servico.nome}}
+                                                {{atendimentoResult.senha.format}}
+                                            </td>
+                                            <td>
+                                                {{atendimentoResult.servico.nome}}
+                                            </td>
+                                            <td>
+                                                {{atendimentoResult.prioridade.nome}}
                                             </td>
                                             <td>
                                                 <span v-if="atendimento.dataChegada">
-                                                    {{moment(atendimento.dataChegada, 'YYYY-MM-DD hh:mm:ss').format(dateTimeFormat)}}
+                                                    {{moment(atendimentoResult.dataChegada, 'YYYY-MM-DD hh:mm:ss').format(dateTimeFormat)}}
                                                 </span>
                                             </td>
                                             <td>
                                                 <span v-if="atendimento.dataInicio">
-                                                    {{moment(atendimento.dataInicio, 'YYYY-MM-DD hh:mm:ss').format(dateTimeFormat)}}
+                                                    {{moment(atendimentoResult.dataInicio, 'YYYY-MM-DD hh:mm:ss').format(dateTimeFormat)}}
                                                 </span>
                                             </td>
                                             <td>
                                                 <span v-if="atendimento.dataFim">
-                                                    {{moment(atendimento.dataFim, 'YYYY-MM-DD hh:mm:ss').format(dateTimeFormat)}}
+                                                    {{moment(atendimentoResult.dataFim, 'YYYY-MM-DD hh:mm:ss').format(dateTimeFormat)}}
                                                 </span>
                                             </td>
                                             <td>
-                                                {{atendimento.triagem}}
+                                                {{atendimentoResult.triagem}}
                                             </td>
                                             <td>
-                                                {{atendimento.usuario}}
+                                                {{atendimentoResult.usuario}}
                                             </td>
                                             <td>
-                                                {{atendimento.status}}
+                                                {{atendimentoResult.status}}
                                             </td>
                                         </tr>
                                     {% endverbatim %}
