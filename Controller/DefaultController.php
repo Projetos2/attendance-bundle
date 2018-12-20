@@ -219,6 +219,7 @@ class DefaultController extends Controller
         $success = false;
         $usuario = $this->getUser();
         $unidade = $usuario->getLotacao()->getUnidade();
+        $idAtendimento = json_decode($request->getContent())->idAtendimento;
         
         // verifica se ja esta atendendo alguem
         $atual = $atendimentoService->atendimentoAndamento($usuario->getId(), $unidade);
@@ -233,7 +234,7 @@ class DefaultController extends Controller
 
             do {
                 $tipo         = $this->getTipoAtendimento($usuarioService, $usuario);
-                $atendimentos = $filaService->filaAtendimento($unidade, $usuario, $servicos, $tipo, 1);
+                $atendimentos = $filaService->filaAtendimento($unidade, $usuario, $servicos, $tipo, 1, $idAtendimento);
                 if (count($atendimentos)) {
                     $proximo = $atendimentos[0];
                     $success = $atendimentoService->chamar($proximo, $usuario, $local);
