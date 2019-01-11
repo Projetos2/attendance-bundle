@@ -226,6 +226,7 @@ var App = App || {};
                     }
                 }
                 this.atendimento.status = 'encerrando';
+                this.atendimento.resolucao = 'resolvido';
             },
             
             encerrarVoltar: function () {
