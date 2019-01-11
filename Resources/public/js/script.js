@@ -383,6 +383,7 @@ var App = App || {};
     });
     
     app.init(atendimento);
+    setInterval(app.update, 10000);
     
     if (!local) {
         $('#dialog-local').modal('show');
