@@ -679,7 +679,7 @@
         function myStopWatch() {
             var stopWatch = document.getElementById("stopWatch");
             if (stopWatch && atendimento && atendimento.dataInicio && atendimento.status === 'iniciado') {
-                stopWatch.innerHTML = new Date(new Date().getTime() - new Date(atendimento.dataInicio).getTime()).toLocaleTimeString();
+                stopWatch.innerHTML = new Date(new Date(new Date().setHours(new Date().getUTCHours())).getTime() - new Date(atendimento.dataInicio).getTime()).toTimeString();
             }
         }
     </script>
