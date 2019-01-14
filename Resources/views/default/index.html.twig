@@ -64,6 +64,16 @@
                                             {%- endverbatim -%}
                                         </td>
                                     </tr>
+                                    <tr>
+                                        <th>
+                                            {{ 'label.ticket.wait_time'|trans }}
+                                        </th>
+                                        <td>
+                                            {%- verbatim -%}
+                                                <div id="stopWatch">
+                                            {%- endverbatim -%}
+                                        </td>
+                                    </tr>
                                 </table>
                             </div>
                         </div>
@@ -663,7 +673,15 @@
             alertEncerrar      = '{{ 'alert.finish.text'|trans }}',
             wsSecret           = '{{ wsSecret }}';
     
-        App.Clock.init("novosga-clock", {{ time }}, atendimento);
+        App.Clock.init("novosga-clock", {{ time }}, atendimento);       
+        
+        setInterval(myStopWatch, 1000);
+        function myStopWatch() {
+            var stopWatch = document.getElementById("stopWatch");
+            if (stopWatch) {
+                stopWatch.innerHTML = new Date().toLocaleTimeString();
+            }
+        }
     </script>
     <script type="text/javascript" src="{{ asset('bundles/novosgaattendance/js/sweetalert.min.js') }}"></script>
     <script src="{{ asset('bundles/novosgaattendance/js/script.js') }}"></script>
