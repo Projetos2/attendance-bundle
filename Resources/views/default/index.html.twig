@@ -630,12 +630,12 @@
     {# som executado quando a fila deixa de estar fazia #}
     <audio id="alert" src="{{ asset('bundles/novosgaattendance/sounds/alert.wav') }}" style="display:none"></audio>
     
-    <template v-if="atendimento && atendimento.status==='iniciado'">
-        <div id="novosga-stopwatch" title="{{ 'label.attendance.stopwatch'|trans }}" class="clock"></div>
-    </template>   
-    <template v-else>
+    {#<template v-if="atendimento && atendimento.status==='iniciado'">#}
+      {#  <div id="novosga-stopwatch" title="{{ 'label.attendance.stopwatch'|trans }}" class="clock"></div>#}
+    {#</template>   #}
+    {#<template v-else>#}
         <div id="novosga-clock" title="{{ 'server.datetime'|trans }}" class="clock"></div>
-    </template>   
+    {#</template>   #}
     
 {% endblock %}
 
@@ -663,8 +663,7 @@
             alertEncerrar      = '{{ 'alert.finish.text'|trans }}',
             wsSecret           = '{{ wsSecret }}';
     
-        App.Clock.init("novosga-clock", {{ time }});
-        App.Clock.init("novosga-stopwatch");
+        App.Clock.init("novosga-clock", {{ time }}, atendimento);
     </script>
     <script type="text/javascript" src="{{ asset('bundles/novosgaattendance/js/sweetalert.min.js') }}"></script>
     <script src="{{ asset('bundles/novosgaattendance/js/script.js') }}"></script>
