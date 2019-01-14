@@ -390,6 +390,12 @@
         <target>Deseja realmente marcar como não compareceu?</target>
         
       </trans-unit>
+      
+      <trans-unit id="74">
+        <source>label.attendance.stopwatch</source>
+        <target>Tempo de atendimento</target>
+        
+      </trans-unit>
     </body>
   </file>
 </xliff>
