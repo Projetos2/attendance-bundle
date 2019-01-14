@@ -66,7 +66,7 @@
                                     </tr>
                                     <tr>
                                         <th>
-                                            {{ 'label.ticket.wait_time'|trans }}
+                                            {{ 'settings.label.timer'|trans }}
                                         </th>
                                         <td>
                                             {%- verbatim -%}
@@ -679,7 +679,8 @@
         function myStopWatch() {
             var stopWatch = document.getElementById("stopWatch");
             if (stopWatch && atendimento && atendimento.dataInicio && atendimento.status === 'iniciado') {
-                stopWatch.innerHTML = new Date(new Date(new Date().setHours(new Date().getUTCHours())).getTime() - new Date(atendimento.dataInicio).getTime()).toTimeString();
+                var dst = new Date().getHours()  !== new Date(atendimento.dataInicio).getHours() ? 1 : 0;
+                stopWatch.innerHTML = new Date(new Date(new Date().setHours(new Date().getUTCHours() + dst)).getTime() - new Date(atendimento.dataInicio).getTime()).toLocaleTimeString();
             }
         }
     </script>
