@@ -54,6 +54,16 @@
                                             {%- endverbatim -%}
                                         </td>
                                     </tr>
+                                    <tr>
+                                        <th>
+                                            {{ 'label.ticket.wait_time'|trans }}
+                                        </th>
+                                        <td>
+                                            {%- verbatim -%}
+                                                {{ atendimento.tempoEspera }}
+                                            {%- endverbatim -%}
+                                        </td>
+                                    </tr>
                                 </table>
                             </div>
                         </div>
@@ -492,15 +502,17 @@
                                 </thead>
                                 <tbody>
                                     {% verbatim %}
-                                        <tr v-for="atendimento in atendimentoResult">
+                                        <tr v-for="atendimentoResult in searchResult">
                                             <td>
-                                               <button type="button" v-if="(atendimentoResult.status==='chamado' || atendimentoResult.status==='iniciado' || atendimentoResult.status==='emitida')"
+                                               <button type="button" v-if="(atendimentoResult.status==='emitida')"
                                                     class="btn btn-primary btn-block"
                                                     title="Chamar"
                                                     v-bind:disabled="atendimento !== null"
                                                     v-on:click="chamar"
                                                     v-bind:id="atendimentoResult.id">
-                                                    <i class="fa fa-bullhorn"></i>
+                                                    <i class="fa fa-bullhorn"
+                                                    	v-bind:id="atendimentoResult.id">
+                                                    </i>
                                                 </button>
                                             </td>
                                             <td>
