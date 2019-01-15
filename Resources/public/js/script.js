@@ -173,6 +173,14 @@ var App = App || {};
                     type: 'post',
                     success: function (response) {
                         self.atendimento = response.data;
+                        function myStopWatch() {
+                            var stopWatch = $('stopWatch');
+                            if (stopWatch && response.data && response.data.dataInicio && response.data.status === 'iniciado') {
+                                var dst = new Date().getHours()  !== new Date(response.data.dataInicio).getHours() ? 1 : 0;
+                                stopWatch.innerHTML = new Date(new Date(new Date().setHours(new Date().getUTCHours() + dst)).getTime() - new Date(response.data.dataInicio).getTime()).toLocaleTimeString();
+                            }
+                        }
+                        setInterval(myStopWatch, 1000);
                     }
                 });
             },
