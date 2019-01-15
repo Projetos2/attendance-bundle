@@ -41,14 +41,13 @@ var App = App || {};
                 
                 this.atendimento = atendimento;
 
-console.log(this.atendimento)
-    function myStopWatch() {
-                            var stopWatch = document.getElementById('stopWatch');
-                            if (stopWatch && this.atendimento && this.atendimento.dataInicio && this.atendimento.status === 'iniciado') {
-                                stopWatch.innerHTML = new Date(new Date().getTime() - new Date(self.atendimento.dataInicio).getTime()).toUTCString().split(' ')[4];
-                            }
-                        }
-                        setInterval(myStopWatch, 1000);
+                function myStopWatch() {
+                    var stopWatch = document.getElementById('stopWatch');
+                    if (stopWatch && this.atendimento && this.atendimento.dataInicio && this.atendimento.status === 'iniciado') {
+                        stopWatch.innerHTML = new Date(new Date().getTime() - new Date(self.atendimento.dataInicio).getTime()).toUTCString().split(' ')[4];
+                    }
+                }
+                setInterval(myStopWatch, 1000);
                 
                 if (!App.Notification.allowed()) {
                     $('#notification').show();
