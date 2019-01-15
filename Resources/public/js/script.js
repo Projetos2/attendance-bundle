@@ -9,16 +9,7 @@ var App = App || {};
     
     var defaultTitle = document.title;
     
-    console.log(this.atendimento)
-    function myStopWatch() {
-                            var stopWatch = document.getElementById('stopWatch');
-                            if (stopWatch && this.atendimento && this.atendimento.dataInicio && this.atendimento.status === 'iniciado') {
-                                //var dst = new Date().getHours()  !== new Date(self.atendimento.dataInicio).getHours() ? 1 : 0;
-                                //stopWatch.innerHTML = new Date(new Date(new Date().setHours(new Date().getUTCHours() + dst)).getTime() - new Date(self.atendimento.dataInicio).getTime()).toLocaleTimeString();
-                                stopWatch.innerHTML = new Date(new Date().getTime() - new Date(self.atendimento.dataInicio).getTime()).toLocaleTimeString();
-                            }
-                        }
-                        setInterval(myStopWatch, 1000);
+    
     
     var app = new Vue({
         el: '#attendance',
@@ -49,6 +40,17 @@ var App = App || {};
                 var self = this;
                 
                 this.atendimento = atendimento;
+
+console.log(this.atendimento)
+    function myStopWatch() {
+                            var stopWatch = document.getElementById('stopWatch');
+                            if (stopWatch && this.atendimento && this.atendimento.dataInicio && this.atendimento.status === 'iniciado') {
+                                //var dst = new Date().getHours()  !== new Date(self.atendimento.dataInicio).getHours() ? 1 : 0;
+                                //stopWatch.innerHTML = new Date(new Date(new Date().setHours(new Date().getUTCHours() + dst)).getTime() - new Date(self.atendimento.dataInicio).getTime()).toLocaleTimeString();
+                                stopWatch.innerHTML = new Date(new Date().getTime() - new Date(self.atendimento.dataInicio).getTime()).toLocaleTimeString();
+                            }
+                        }
+                        setInterval(myStopWatch, 1000);
                 
                 if (!App.Notification.allowed()) {
                     $('#notification').show();
