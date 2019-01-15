@@ -385,7 +385,7 @@
       </trans-unit>
       
       <trans-unit id="74">
-        <source>label.attendance.stopwatch</source>
+        <source>label.stopwatch</source>
         <target>Tempo de atendimento</target>
         
       </trans-unit>
