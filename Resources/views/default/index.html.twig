@@ -64,9 +64,9 @@
                                             {%- endverbatim -%}
                                         </td>
                                     </tr>
-                                    <tr>
+                                    <tr v-if="atendimento && atendimento.status==='iniciado'">
                                         <th>
-                                            {{ 'settings.label.timer'|trans }}
+                                            {{ 'label.stopwatch'|trans }}
                                         </th>
                                         <td>
                                             {%- verbatim -%}
@@ -673,8 +673,7 @@
             alertEncerrar      = '{{ 'alert.finish.text'|trans }}',
             wsSecret           = '{{ wsSecret }}';
     
-        App.Clock.init("novosga-clock", {{ time }}, atendimento);       
-        
+        App.Clock.init("novosga-clock", {{ time }});
         
     </script>
     <script type="text/javascript" src="{{ asset('bundles/novosgaattendance/js/sweetalert.min.js') }}"></script>
