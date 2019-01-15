@@ -45,9 +45,7 @@ console.log(this.atendimento)
     function myStopWatch() {
                             var stopWatch = document.getElementById('stopWatch');
                             if (stopWatch && this.atendimento && this.atendimento.dataInicio && this.atendimento.status === 'iniciado') {
-                                //var dst = new Date().getHours()  !== new Date(self.atendimento.dataInicio).getHours() ? 1 : 0;
-                                //stopWatch.innerHTML = new Date(new Date(new Date().setHours(new Date().getUTCHours() + dst)).getTime() - new Date(self.atendimento.dataInicio).getTime()).toLocaleTimeString();
-                                stopWatch.innerHTML = new Date(new Date().getTime() - new Date(self.atendimento.dataInicio).getTime()).toLocaleTimeString();
+                                stopWatch.innerHTML = new Date(new Date().getTime() - new Date(self.atendimento.dataInicio).getTime()).toUTCString().split(' ')[4];
                             }
                         }
                         setInterval(myStopWatch, 1000);
@@ -192,9 +190,7 @@ console.log(this.atendimento)
                         function myStopWatch() {
                             var stopWatch = document.getElementById('stopWatch');
                             if (stopWatch && self.atendimento && self.atendimento.dataInicio && self.atendimento.status === 'iniciado') {
-                                //var dst = new Date().getHours()  !== new Date(self.atendimento.dataInicio).getHours() ? 1 : 0;
-                                //stopWatch.innerHTML = new Date(new Date(new Date().setHours(new Date().getUTCHours() + dst)).getTime() - new Date(self.atendimento.dataInicio).getTime()).toLocaleTimeString();
-                                stopWatch.innerHTML = new Date(new Date().getTime() - new Date(self.atendimento.dataInicio).getTime()).toLocaleTimeString();
+                                stopWatch.innerHTML = new Date(new Date().getTime() - new Date(self.atendimento.dataInicio).getTime()).toUTCString().split(' ')[4];
                             }
                         }
                         setInterval(myStopWatch, 1000);
