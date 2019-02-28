@@ -318,6 +318,10 @@
         <source>label.stopwatch</source>
         <target>Tempo de atendimento</target>
       </trans-unit>
+      <trans-unit id="75">
+        <source>label.totalSenha</source>
+        <target>Total de senhas:</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
