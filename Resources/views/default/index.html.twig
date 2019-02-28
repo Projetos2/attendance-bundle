@@ -338,7 +338,8 @@
             </div>
             <div id="fila" class="card">
                 <h5 class="card-header">
-                    {{ 'label.my_queue'|trans }}  (<span v-bind:class="'tipo-' + usuario.tipoAtendimento">{% verbatim %}{{ tiposAtendimento[usuario.tipoAtendimento] }}{% endverbatim %}</span>)
+                    {{ 'label.my_queue'|trans }}  (<span v-bind:class="'tipo-' + usuario.tipoAtendimento">{% verbatim %}{{ tiposAtendimento[usuario.tipoAtendimento] }}{% endverbatim %} </span>)
+                    (<span v-bind:class="'tipo-' + usuario.tipoAtendimento">{{ 'Total de senhas: ' }}{% verbatim %}{{atendimentos.length}}{% endverbatim %} </span>)
                 </h5>
                 <div class="card-body">
                     <ul>
